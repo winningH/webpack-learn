@@ -81,32 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/login.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/a.js":
-/*!******************!*\
-  !*** ./src/a.js ***!
-  \******************/
-/*! exports provided: str */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"str\", function() { return str; });\nconst str = \"webpack\"\n\n//# sourceURL=webpack:///./src/a.js?");
-
-/***/ }),
-
-/***/ "./src/index.js":
+/***/ "./src/login.js":
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./src/login.js ***!
   \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _a_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\n\r\nconsole.log(`hello, ${_a_js__WEBPACK_IMPORTED_MODULE_0__[\"str\"]}`)\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log(\"hello login\")\n\n//# sourceURL=webpack:///./src/login.js?");
 
 /***/ })
 
