@@ -2,6 +2,7 @@
 const path = require("path")
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   // entry: 入口
@@ -27,11 +28,13 @@ module.exports = {
         // loader 执行顺序：自后往前，从右到左，从下到上
         test: /\.css$/,
         // use: "css-loader"
-        use: ["style-loader", "css-loader"]
+        // use: ["style-loader", "css-loader"]
+        use: [miniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
+        // use: ["style-loader", "css-loader", "less-loader"]
+        use: [miniCssExtractPlugin.loader, "css-loader", "less-loader"]
       }
     ]
   },
@@ -40,6 +43,10 @@ module.exports = {
       template: './src/index.html',
       filename: 'html/index.html'
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    // 把样式抽离成独立的文件
+    new miniCssExtractPlugin({
+      filename: 'css/index.css'
+    })
   ]
 }
