@@ -9,6 +9,9 @@ module.exports = {
     filename: "main.js"
   },
   mode: 'development',
+  resolveLoader: {
+    modules: ["./node_modules", "./myLoaders"]
+  },
   module: {
     rules: [
       {
@@ -35,11 +38,28 @@ module.exports = {
       },
       {
         test: /.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
+        // use: ["style-loader", "css-loader", "less-loader"]
+        // 使用自定义的loader
+        use: ["styleLoader", "cssLoader", "lessLoader"]
       },
       {
         test: /\.css$/,
         loader: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.js$/,
+        use: [
+          // path.resolve(__dirname, './myLoaders/replaceLoader.js'),
+          // 使用resolveLoader 之后, 可以直接使用loader名称
+          "replaceLoader",
+          {
+            // loader: path.resolve(__dirname, './myLoaders/replaceLoaderAsync.js'),
+            loader: "replaceLoaderAsync",
+            options: {
+              name: "WEBPACK"
+            }
+          }
+        ]
       }
     ]
   },
