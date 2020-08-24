@@ -37,10 +37,14 @@ module.exports = {
         }
       },
       {
-        test: /.less$/,
+        test: /\.less$/,
         // use: ["style-loader", "css-loader", "less-loader"]
         // 使用自定义的loader
         use: ["styleLoader", "cssLoader", "lessLoader"]
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.css$/,

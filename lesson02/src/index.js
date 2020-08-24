@@ -1,7 +1,7 @@
 // console.log("hello webpack")
 
 // import pic from "./assets/images/logo.png"
-import './assets/css/index.less'
+import './assets/css/index.scss'
 // console.log(pic)
 
 // const img = new Image()
