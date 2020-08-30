@@ -1,1 +1,1 @@
-export const b = 'webpack-b'
+export const b = "!!!";

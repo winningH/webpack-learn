@@ -34,7 +34,7 @@ module.exports = class webpack {
     this.file(obj)
   }
   parse(entryFile) {
-    // 读取入口文件的内容
+    // 读取入口模块的内容
     const content = fs.readFileSync(entryFile, 'utf-8')
     const ast = parser.parse(content, {
       sourceType: 'module'
@@ -43,27 +43,29 @@ module.exports = class webpack {
     const dependencies = {}
     traverse(ast, {
       ImportDeclaration({ node }) {
-        // console.log(node.source.value)
-        const pathName =
-          '.' + path.join(path.dirname(entryFile), node.source.value)
-        console.log('pathName', pathName)
+        console.log(node.source.value)
+        console.log(path.resolve(path.dirname(entryFile)))
+        // const pathName =
+        //   './' + path.join(path.dirname(entryFile), node.source.value)
+        const pathName = path.resolve(
+          path.dirname(entryFile),
+          node.source.value
+        )
         dependencies[node.source.value] = pathName
-        console.log('dep', dependencies)
-
-        const { code } = transformFromAst(ast, null, {
-          presets: ['@babel/preset-env']
-        })
-        console.log(code)
-        return {
-          entryFile,
-          dependencies,
-          code
-        }
       }
     })
+    // console.log(ast.program.body)
+    const { code } = transformFromAst(ast, null, {
+      presets: ['@babel/preset-env']
+    })
+    return {
+      entryFile,
+      dependencies,
+      code
+    }
   }
   file(code) {
-    // 生产bundle启动器函数
+    // 生成bundle启动器函数
     const filePath = path.join(this.output.path, this.output.filename)
     const newCode = JSON.stringify(code)
     const bundle = `(function(graph){
