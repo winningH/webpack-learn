@@ -10,9 +10,10 @@ module.exports = {
   entry: path.resolve(__dirname, '../src/main.js'),
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name]_[connectHash:8].js',
+    filename: '[name]_[connecthash:8].js',
     assetModuleFilename: 'assets/[name][ext]',
-    clean: true
+    clean: true,
+    publicPath: process.env.NODE_ENV === 'development' ? '/' : '/prodVue/'
   },
 
   module: {

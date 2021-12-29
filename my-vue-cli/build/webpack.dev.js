@@ -9,6 +9,7 @@ module.exports = merge(webpackConfig, {
   devServer: {
     port: '8080',
     hot: true,
+    historyApiFallback: true // 解决history模式
   },
 
   module: {
@@ -19,11 +20,16 @@ module.exports = merge(webpackConfig, {
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader'],
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ],
         exclude: /node_modules/
       }
     ]

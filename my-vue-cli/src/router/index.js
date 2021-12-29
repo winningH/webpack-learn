@@ -23,7 +23,8 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
+  base: process.env.NODE_ENV === 'development' ? '/' : '/prodVue'
 })
 
 export default router
