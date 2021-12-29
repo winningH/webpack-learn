@@ -8,7 +8,7 @@ module.exports = merge(webpackConfig, {
   devtool: 'eval-cheap-module-source-map',
   devServer: {
     port: '8080',
-    hot: true,
+    // hot: true,
     historyApiFallback: true // 解决history模式
   },
 

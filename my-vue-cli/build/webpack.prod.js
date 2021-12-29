@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = merge(webpackConfig, {
-  // 开发工具，开启 source map，编译调试
   mode: 'production',
 
   module: {
